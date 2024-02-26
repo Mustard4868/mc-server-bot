@@ -34,7 +34,10 @@ class botCommands(commands.Cog):
 
     @commands.command()
     async def start(self, ctx):
-        pass
+        if not check_connection():
+            # os.system("java -Xmx1024M -Xms1024M -jar server.jar nogui") correct this command to run forge server.
+            await ctx.send("Server is starting.")
+        else: await ctx.send("Server is already running.")
 
 async def setup(bot):
     await bot.add_cog(botCommands(bot))
